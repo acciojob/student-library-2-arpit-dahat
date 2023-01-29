@@ -1,4 +1,4 @@
-package com.example.library.studentlibrary.models;
+package com.driver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,7 +19,7 @@ public class Author {
     private int age;
     private String country;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("author")
     private List<Book> booksWritten;
 
@@ -49,6 +49,14 @@ public class Author {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getAge() {
         return age;
     }
@@ -71,13 +79,5 @@ public class Author {
 
     public void setBooksWritten(List<Book> booksWritten) {
         this.booksWritten = booksWritten;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

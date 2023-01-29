@@ -1,12 +1,10 @@
-package com.example.library.studentlibrary.models;
+package com.driver.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class Book {
@@ -34,7 +32,7 @@ public class Book {
     @Column(columnDefinition = "TINYINT(1)")
     private boolean available;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("book")
     private List<Transaction> transactions;
 
@@ -72,12 +70,12 @@ public class Book {
         this.genre = genre;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public Card getCard() {
@@ -88,12 +86,12 @@ public class Book {
         this.card = card;
     }
 
-    public Author getAuthor() {
-        return author;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public List<Transaction> getTransactions() {
@@ -103,5 +101,4 @@ public class Book {
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
-
 }

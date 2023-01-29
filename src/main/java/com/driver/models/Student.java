@@ -1,4 +1,4 @@
-package com.example.library.studentlibrary.models;
+package com.driver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
@@ -24,13 +24,13 @@ public class Student {
     public Student() {
     }
 
+
     public Student(String email, String name, int age, String country) {
         this.emailId = email;
         this.name = name;
         this.age = age;
         this.country = country;
     }
-
     // alter table student add foreign key constraint card references Card(id)
 
     @OneToOne
@@ -44,6 +44,7 @@ public class Student {
 
     @UpdateTimestamp
     private Date updatedOn;
+
 
     public int getId() {
         return id;

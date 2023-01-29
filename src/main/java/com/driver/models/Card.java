@@ -1,4 +1,4 @@
-package com.example.library.studentlibrary.models;
+package com.driver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,7 +15,7 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(mappedBy = "card", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "card", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("card")
     private Student student;
 
@@ -28,7 +28,7 @@ public class Card {
     @Enumerated(value = EnumType.STRING)
     private CardStatus cardStatus;
 
-    @OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("card")
     private List<Book> books;
 
